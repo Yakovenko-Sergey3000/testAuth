@@ -1,14 +1,15 @@
 const {Router} = require('express');
 const router = Router();
-const modelDB = require('../models/modelDB');
+const ModelDB = require('../models/modelDB');
 
 
 const auth = async (req, res, next) => {
     
-
+    const modelDB = new ModelDB();
    try {
     const cookies = req.cookies;
-     await modelDB.getToken(cookies.token);
+    await modelDB.getToken(cookies.token);
+    
      next();
 
    } catch(e) {

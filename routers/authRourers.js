@@ -1,5 +1,7 @@
 const {Router} = require('express');
-const modelDB = require('../models/modelDB');
+const ModelDB = require('../models/modelDB');
+
+
 
 const router = Router();
 
@@ -12,9 +14,10 @@ router.get('/reg',(req, res) => {
 })
 
 router.post('/reg/add', async (req, res) => {
+    const modelDB = new ModelDB(); 
     
     try {
-        await modelDB.add(res, req.body)
+        await modelDB.add(req.body)
        
         res.redirect('/');
     } catch(e) {
@@ -30,12 +33,9 @@ router.get('/log',(req, res) => {
 
 router.post('/log',async (req, res) => {
     try {
-        let token;
-       await modelDB.login(req.body);
-       await modelDB.createToken(1)
-       .then(res => {
-           token = res.rows[0].token;
-       })
+    const modelDB = new ModelDB();
+    const user = await modelDB.login(req.body);
+    const token = await (await modelDB.createToken(user.id)).rows[0].token;
        res.cookie('token', token , {maxAge: Date.now() * 7})
         res.redirect('/open')
 
@@ -45,7 +45,10 @@ router.post('/log',async (req, res) => {
 })
 
 router.get('/logout', async (req, res) => {
-    await modelDB.deleteToken(1)
+    
+    const modelDB = new ModelDB();
+    await modelDB.deleteToken(req.cookies.token)
+    
     res.clearCookie('token')
 
     res.redirect('/log');
