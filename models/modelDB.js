@@ -78,8 +78,8 @@ class ModelDB {
        return db.query('UPDATE users SET token=$1 WHERE id=$2 RETURNING *', [token, id])
     }
 
-    async deleteToken(token) {
-        
+    async logout(token) {
+        console.log("Вы вышли");
        return db.query('UPDATE users SET token=$1 WHERE token=$2 RETURNING *', [null, token])
     }
 

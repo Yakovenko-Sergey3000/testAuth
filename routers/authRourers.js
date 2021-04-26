@@ -47,7 +47,7 @@ router.post('/log',async (req, res) => {
 router.get('/logout', async (req, res) => {
     
     const modelDB = new ModelDB();
-    await modelDB.deleteToken(req.cookies.token)
+    await modelDB.logout(req.cookies.token)
     
     res.clearCookie('token')
 
