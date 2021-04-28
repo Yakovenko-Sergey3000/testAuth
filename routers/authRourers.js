@@ -1,12 +1,13 @@
 const {Router} = require('express');
-const ModelDB = require('../models/modelDB');
+const ModelDB = require('../models/ModelDB');
 
 
 
 const router = Router();
 
 router.get('/', (req, res) => {
-    res.render('index.ejs')
+    const cookies = req.cookies;
+    res.render('index.ejs', {title: 'MyBlog',token: cookies.token})
 })
 
 router.get('/reg',(req, res) => {
@@ -40,6 +41,7 @@ router.post('/log',async (req, res) => {
         res.redirect('/open')
 
     } catch(e) {
+        
         res.status(400).json(e)
     }
 })

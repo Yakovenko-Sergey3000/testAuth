@@ -1,22 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/style.css"> 
+    <%- include('./partials/head.ejs') %>
+    <title><%=title%></title>
 </head>
+
+
+
 <body>
+   
+        <div class="container">
+            <div class="header d-flex justify-content-end">
 
-    <div class="window">
-        <a href="/reg">Reg</a>
-        <a href="/log">Log</a>
-        <a href="/open">Open</a>
+                <ul class="nav">
+                    <a class="badge badge-dark" href="/open"><li>Open Blog</li></a>
+                    <a class="badge badge-light" href="/log"><li>Login</li></a>
+                    <a class="badge badge-light" href="/reg"><li>Registration</li></a>
+                </ul>
+                
+            </div>
+        </div>
 
+        <div class="hello-img">
+            <div class="info">
+                <h1 class="info-title">&lt;h1 Hello Blog.../&gt;</h1>
+                <h3 class="info-subtitle">Welcome to...</h3>
+                <div>
+                    <a class="info-btn badge badge-danger" href="/open"><li>Open Blog</li></a>
+                </div>
+            </div>
+        </div>
 
-       
-    </div>
     
+
+    
+
+   
+   
 </body>
 </html>

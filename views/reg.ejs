@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/style.css">
+    <%- include('./partials/head.ejs') %>
 </head>
 <body>
 
-    <a href="/">Prev</a>
-    <div class="window">
-        <form  class="form" action="/reg/add" method="POST">
-            <input type="text" placeholder="login" name="name">
-            <input type="password" placeholder="password" name="pass" required>
-            <input type="text" placeholder="email" name="email"><br>
-            <button type="submit">Send</button>
-        </form>
-        
-        
+    <div class="hello-img">
+        <div class="container">
+            <a class="badge badge-danger mt-3" href="/">Prev</a>
+            <div class="window">
+                <h2 class="window-title">Registration</h2>
+                <form  class="form" action="/reg/add" method="POST">
+                    <input type="text" placeholder="login" name="name">
+                    <input type="password" placeholder="password" name="pass" required>
+                    <input type="text" placeholder="email" name="email"><br>
+                    <button class="btn btn-dark" type="submit">Send</button>
+                </form>
+            
+            
+            </div>
+        </div>
     </div>
     
 </body>

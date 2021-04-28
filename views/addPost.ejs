@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs') %>
+    <title><%=title%></title>
+</head>
+<body>
+    <%- include('./partials/header.ejs') %>
+
+    <div class="container">
+       <form action="/post/add" method="POST">
+            <div class="col-sm-4">
+                <label for="colFormLabelLg" class="col col-form-label col-form-label-lg">Post</label>
+                <input type="text" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Enter post..." name="text">  
+            </div>
+            <div class="col-sm-4">
+                <label for="colFormLabelLg" class="col col-form-label col-form-label-lg">URL-img</label>
+                <input type="text" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Enter url..." name="url">  
+            </div>
+            <input type="hidden" value="<%=id%>" name="id">
+
+            <div class="col">
+                <button class="btn btn-dark col-sm-2" type="submit">Send</button>
+            </div>
+            
+           
+       </form>
+    </div>
+    
+</body>
+</html>

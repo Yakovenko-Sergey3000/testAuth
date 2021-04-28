@@ -6,7 +6,8 @@ const express = require('express'),
     bodyParser = require('body-parser')
     client = require('./db'),
     homeRouters = require('./routers/homeRouters'),
-    cookieParser = require('cookie-parser');
+    cookieParser = require('cookie-parser'),
+    
 
 
 app.set('view engine', 'ejs');
