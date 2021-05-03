@@ -1,29 +1,25 @@
 const {Router} = require('express');
-const ModelDB = require('../models/ModelDB');
+const AuthServise = require('../models/AuthServise');
+
+
 
 
 
 const router = Router();
 
-router.get('/', (req, res) => {
-    const cookies = req.cookies;
-    res.render('index.ejs', {title: 'MyBlog',token: cookies.token})
-})
+const authServise = new AuthServise();
 
 router.get('/auth/reg',(req, res) => {
+    authServise.getUsers()
     res.render('reg.ejs')
 })
 
-router.post('/reg/add', async (req, res) => {
-    const modelDB = new ModelDB();
-
+router.post('/auth/reg/add', async (req, res) => {
     try {
-        await modelDB.add(req.body)
-       
+        await authServise.createUser(req.body);
         res.redirect('/');
     } catch(e) {
-        console.log(e);
-        res.status(400).json(e);
+        res.status(400).json(e.toString());
     }
    
 })
@@ -34,22 +30,19 @@ router.get('/auth/log',(req, res) => {
 
 router.post('/auth/log',async (req, res) => {
     try {
-    const modelDB = new ModelDB();
-    const user = await modelDB.login(req.body);
-    const token = await (await modelDB.createToken(user.id)).rows[0].token;
-       res.cookie('token', token , {maxAge: Date.now() * 7})
-        res.redirect('/open')
-
+        const user = await authServise.login(req.body)
+        const token = await authServise.createToken(user.id);
+           res.cookie('token', token )
+            res.redirect('/open')
     } catch(e) {
-        
-        res.status(400).json(e)
+        res.status(400).json(e.toString())
     }
 })
 
-router.get('/logout', async (req, res) => {
-    
-    const modelDB = new ModelDB();
-    await modelDB.logout(req.cookies.token)
+router.get('/auth/logout', async (req, res) => {
+    //
+    // const modelDB = new ModelDB();
+    // await modelDB.logout(req.cookies.token)
     
     res.clearCookie('token')
 

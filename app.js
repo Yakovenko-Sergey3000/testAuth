@@ -5,9 +5,10 @@
         PORT = process.env.PORT || 3000,
         authRouters = require('./routers/authRourers'),
         bodyParser = require('body-parser'),
-        client = require('./db'),
-        homeRouters = require('./routers/homeRouters'),
-        cookieParser = require('cookie-parser')
+        db = require('./db')
+        homeRouters = require('./routers/blogRouters'),
+        cookieParser = require('cookie-parser'),
+
 
 
 
@@ -19,7 +20,18 @@
     app.use('/', authRouters);
     app.use('/', homeRouters);
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+    const start = () => {
+        try {
+            app.use(db);
+            const result = db.select('users')
+            app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+   start();
 
 
 
