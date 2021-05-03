@@ -86,12 +86,18 @@ class ModelDB {
    
 
     async addPost(post) {
-        const {text, url, id} = post;
-        db.query('INSERT INTO posts (text, img_url, user_id) values ($1, $2, $3)', [text, url, id])
+        const {text, url, id, title} = post;
+        
+        db.query('INSERT INTO posts (title, text, img_url, user_id) values ($1, $2, $3, $4)', [title,text, url, id])
     }
 
     async allPostsUser(id) {
        return await db.query('select * from posts where user_id=$1', [id] )
+    }
+
+
+    async deletePost(id) {
+        return await db.query('delete from posts where id=$1', [id] )
     }
 }
 

@@ -1,5 +1,6 @@
 body{
     margin: 0;
+   
 }
 
 .window {
@@ -14,7 +15,7 @@ body{
 }
 
 .nav {
-    padding: 10px;
+    padding: 5px;
 }
 
 input {
@@ -50,8 +51,17 @@ li {
 
 }
 
-.row {
-    margin-bottom: 10px;
+
+
+.page-bg.posts {
+    min-height: 100vh;
+    background-image: url('/img/bg-posts.jpg');
+}
+
+.page-bg.addPost{
+    min-height: 100vh;
+    background-image: url('/img/06143.jpg');
+    background-size: cover;
 }
 
 
@@ -91,4 +101,149 @@ li {
     height: 70px;
     padding: 20px;
     font-size: 30px;
+}
+
+
+
+/* Cards */
+
+.card-col{
+    margin-left: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+
+
+.card {
+    width: 40%;
+    max-height: 30%;
+    margin: 15px;
+    padding: 10px;
+    
+}
+
+.card-close{
+    margin-bottom: 10px;
+}
+
+.card-close button{
+    outline: none;
+}
+
+
+.card-title{
+    margin: 15px 0 0 30px;
+
+}
+
+.card-img {
+    margin: 10px 0;
+    max-height: 200px;
+}
+
+.card-body {
+    padding: 0 15px;
+   
+    overflow: auto;
+}
+
+.card-text{
+   margin-bottom: 3px;
+}
+
+.card-footer{
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: none;
+    background-color: #fff;
+}
+
+.card-elems {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.card-date{
+    display: block;
+    font-size: 12px;
+    color: #999;
+}
+
+.dont-card{
+    margin-top: 20px;
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 72px;
+    color: #fff;
+    background-color: rgba(53, 52, 52, 0.884);
+}
+
+
+/* Stars */
+
+.rating-area {
+	/* overflow: hidden; */
+    margin-right: 30px;
+}
+.rating-area:not(:checked) > input {
+	display: none;
+}
+.rating-area:not(:checked) > label {
+	float: right;
+	width: 22px;
+	padding: 0;
+	cursor: pointer;
+	font-size: 20px;
+	line-height: 12px;
+	color: lightgrey;
+	text-shadow: 1px 1px #bbb;
+}
+.rating-area:not(:checked) > label:before {
+	content: '★';
+}
+.rating-area > input:checked ~ label {
+	color: gold;
+	text-shadow: 1px 1px #c60;
+}
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+	color: gold;
+}
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+	color: gold;
+	text-shadow: 1px 1px goldenrod;
+}
+.rate-area > label:active {
+	position: relative;
+}
+
+
+/* modal */
+
+.modal-body{
+    text-align: center;
+    font-size: 25px;
+}
+
+
+/* Add post */
+.addPost{
+    padding: 100px;
+}
+
+.addPostTitle{
+    padding: 30px;
+    font-size: 70px;
+    font-weight: 700;
+    text-shadow: 1px 1px 20px #999;
 }

@@ -9,7 +9,9 @@ CREATE TABLE users(
 
 CREATE TABLE posts(
     id SERIAL PRIMARY KEY,
+    title VARCHAR(30),
     text TEXT,
     img_url TEXT,
+    date timestamp not null default CURRENT_DATE,
     user_id INTEGER REFERENCES users(id)
 );

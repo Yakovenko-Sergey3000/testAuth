@@ -15,8 +15,8 @@ router.get('/reg',(req, res) => {
 })
 
 router.post('/reg/add', async (req, res) => {
-    const modelDB = new ModelDB(); 
-    
+    const modelDB = new ModelDB();
+
     try {
         await modelDB.add(req.body)
        

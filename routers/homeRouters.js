@@ -3,6 +3,7 @@ const router = Router();
 const ModelDB = require('../models/ModelDB');
 
 
+
 const auth = async (req, res, next) => {
     
     const modelDB = new ModelDB();
@@ -37,7 +38,6 @@ router.get('/posts', async (req,res) => {
         const cookies = req.cookies;
         const user = await modelDB.getToken(cookies.token);
         const allPosts = await modelDB.allPostsUser(user.id);
-        console.log(allPosts.rows);
         res.render('posts.ejs', {title: 'posts', posts: allPosts.rows,user:user.login})
 
     } catch(e) {
@@ -60,6 +60,18 @@ router.post('/post/add', async (req,res) => {
     try {
         const modelDB = new ModelDB();
        await modelDB.addPost(req.body)
+        res.redirect('/posts')
+    } catch(e) {
+      console.log(e);
+    }
+})
+
+
+
+router.post('/post/del', async (req,res) => {
+    try {
+        const modelDB = new ModelDB();
+        modelDB.deletePost(req.body.id)
         res.redirect('/posts')
     } catch(e) {
       console.log(e);
