@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     res.render('index.ejs', {title: 'MyBlog',token: cookies.token})
 })
 
-router.get('/reg',(req, res) => {
+router.get('/auth/reg',(req, res) => {
     res.render('reg.ejs')
 })
 
@@ -28,11 +28,11 @@ router.post('/reg/add', async (req, res) => {
    
 })
 
-router.get('/log',(req, res) => {
+router.get('/auth/log',(req, res) => {
         res.render('log.ejs' ,{title: 'login'})
 })
 
-router.post('/log',async (req, res) => {
+router.post('/auth/log',async (req, res) => {
     try {
     const modelDB = new ModelDB();
     const user = await modelDB.login(req.body);
@@ -53,7 +53,7 @@ router.get('/logout', async (req, res) => {
     
     res.clearCookie('token')
 
-    res.redirect('/log');
+    res.redirect('/auth/log');
 })
 
 

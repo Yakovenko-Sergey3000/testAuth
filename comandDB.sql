@@ -3,7 +3,12 @@ CREATE TABLE users(
     login VARCHAR(255),
     password VARCHAR(255),
     email VARCHAR(255),
-    token TEXT
+);
+
+
+CREATE TABLE auth_session(
+    id SERIAL PRIMARY KEY,
+   user_id INTEGER REFERENCES users(id)
 );
 
 

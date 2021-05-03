@@ -3,6 +3,8 @@ const db = require('../db'),
 
 class ModelDB {
 
+
+
      async add(body) {
        const {name, pass, email} = body,
             hashPass = bcrypt.hashSync(pass, 7);

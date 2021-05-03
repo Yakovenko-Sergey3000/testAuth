@@ -14,7 +14,7 @@ const auth = async (req, res, next) => {
      next();
 
    } catch(e) {
-       res.redirect('/log')
+       res.redirect('/auth/log')
    }
     
     
