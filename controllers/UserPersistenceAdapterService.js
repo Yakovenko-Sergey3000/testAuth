@@ -9,15 +9,12 @@ class UserAdapterService {
        return await knex('users').select('*').where('login',login)
     }
 
-   async getAll() {
-       return await knex('users').select('*')
-   }
 
    async createSession(token, userId) {
         await knex('auth_session').insert({token, user_id:userId});
    }
 
-   async getByToken(token) {
+   async getSessionByToken(token) {
        return await knex('auth_session').select('token').where('token', token)
    }
 }

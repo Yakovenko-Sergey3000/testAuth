@@ -5,8 +5,8 @@ class User {
         this.email = email;
     }
 
-    static addPost() {
-        console.log(123)
+    addPost() {
+        console.log(this.login)
     }
 }
 

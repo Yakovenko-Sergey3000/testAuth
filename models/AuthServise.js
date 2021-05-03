@@ -25,12 +25,6 @@ class AuthServise {
     }
 
 
-
-    async getUsers() {
-        const users = await adapterService.getAll()
-
-    }
-
    async login(body) {
         const {name, password} = body,
              user = await adapterService.getByLogin(name);
@@ -46,7 +40,6 @@ class AuthServise {
        try {
            if(bcrypt.compareSync(password, user[0].password)) {
                 return user[0];
-               console.log("Вы вошли");
            }
        } catch (e) {
            return e
@@ -61,19 +54,10 @@ class AuthServise {
      }
 
      async getToken(token) {
-       return  token ? await adapterService.getByToken(token) : '';
+       return  token ? await adapterService.getSessionByToken(token) : '';
     }
-   //
-   //
 
-   //
-   //  async logout(token) {
-   //      console.log("Вы Вышли");
-   //     return db.query('UPDATE users SET token=$1 WHERE token=$2 RETURNING *', [null, token])
-   //  }
-   //
-   //
-   //
+
    //  async addPost(post) {
    //      const {text, url, id, title} = post;
    //
