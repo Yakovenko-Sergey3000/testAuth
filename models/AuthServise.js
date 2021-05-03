@@ -17,7 +17,7 @@ class AuthServise {
         }
 
        try{
-          await adapterService.addUser(name,hashPass,email)
+         return  await adapterService.addUser(name,hashPass,email)
        } catch (e) {
            return e
        }
@@ -60,22 +60,9 @@ class AuthServise {
         return newToken;
      }
 
-   //   async getToken(token) {
-   //
-   //      let candidate = await (await db.query('SELECT * FROM users WHERE token=$1', [token])).rows[0];
-   //
-   //
-   //      return new Promise((resolve, reject) => {
-   //          if(!candidate) {
-   //              reject()
-   //          } else {
-   //              resolve(candidate);
-   //          }
-   //
-   //
-   //      })
-   //
-   //  }
+     async getToken(token) {
+       return  token ? await adapterService.getByToken(token) : '';
+    }
    //
    //
 

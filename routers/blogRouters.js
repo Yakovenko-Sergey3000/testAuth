@@ -1,18 +1,21 @@
-const {Router} = require('express');
-const router = Router();
-const ModelDB = require('../models/AuthServise');
-const addTable = require('../controllers/useTable')
+const {Router} = require('express'),
+     router = Router(),
+     ModelDB = require('../models/AuthServise'),
+     addTable = require('../controllers/useTable'),
+     AuthServise = require('../models/AuthServise');
 
+const authServise = new AuthServise();
 
 const auth = async (req, res, next) => {
-    
-    const modelDB = new ModelDB();
    try {
-    const cookies = req.cookies;
-    const user = await modelDB.getToken(cookies.token);
-     next();
+        const cookies = req.cookies;
+        const result =  await authServise.getToken(cookies.token);
+       if (!result) {
+           throw new Error();
+       }
+         next();
    } catch(e) {
-       res.redirect('/auth/log')
+        res.redirect('/auth/log')
    }
 }
 
@@ -24,10 +27,7 @@ router.get('/', async (req, res) => {
 
 router.get('/open',auth, async (req,res) => {
     try {
-        const modelDB = new ModelDB();
-        const cookies = req.cookies;
-        const user = await modelDB.getToken(cookies.token);
-        res.render('open.ejs', {title: 'OpenSite', user:user.login})
+        res.render('open.ejs', {title: 'OpenSite'})
     } catch(e) {
         console.log(e);
     }
