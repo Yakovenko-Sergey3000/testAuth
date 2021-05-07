@@ -248,3 +248,31 @@ li {
     font-weight: 700;
     text-shadow: 1px 1px 20px #999;
 }
+
+
+
+#inputFIle {
+    display: none;
+}
+
+
+.fake-btn-chooce{
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(168, 168, 168, 0.795);
+    border-radius: 5px;
+    color: #fff;
+    transition: background-color .2s linear;
+}
+
+.fake-btn-chooce:hover{
+    cursor: pointer;
+    
+    background-color: rgb(168, 168, 168);
+}
+
+.inputFileText{
+    margin-left: 10px;
+    font-weight: 400;
+
+}

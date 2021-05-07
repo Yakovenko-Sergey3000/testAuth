@@ -9,6 +9,20 @@ btnClose.forEach((btn, i) => {
 })
 
 
+const fileInput = document.querySelector('#inputFIle'),
+     fileInputText = document.querySelector('.inputFileText');
+
+
+fileInput.addEventListener('change', (e) => {
+  const fileName = e.target.files[0].name
+  if(!fileName) {
+    fileInputText.textContent = 'Picture not selected'
+  }
+  fileInputText.textContent = fileName;
+})
+
+
+
 
 
 

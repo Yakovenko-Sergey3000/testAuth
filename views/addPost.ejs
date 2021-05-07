@@ -15,10 +15,12 @@
                      <input type="text" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Enter title..." name="title">  
                  </div>
                  <div class="col-sm-4">
-                     <input type="text" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Enter text..." name="text">  
+                     <textarea type="text" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Enter text..." name="text" rows="7"></textarea> 
                  </div>
                  <div class="col">
-                     <input type="file" class="" name="url" accept="image/jpeg,image/png" value="/img/post-img" >
+                     <label class="fake-btn-chooce" for="inputFIle">Add picture</label>
+                     <span class="inputFileText">Picture not selected</span>
+                     <input id="inputFIle" type="file" class="" name="url" accept="image/jpeg,image/png" value="/img/post-img" aria-describedby="inputGroupFileAddon04">
                  </div>
 
                  <input type="hidden" value="<%=id%>" name="id">
@@ -32,5 +34,9 @@
          </div>
          
     </div>
+
+
+    <%- include('./partials/footer.ejs') %>
+
 </body>
 </html>
