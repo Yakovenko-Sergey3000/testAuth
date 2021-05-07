@@ -29,10 +29,10 @@ module.exports.createTables = async () => {
                 return
             case tablePosts :
                 await knex.schema
-                    .createTable('posts', table => {
+                    .createTable('posts' ,table => {
                         table.increments('id');
                         table.string('title');
-                        table.string('text');
+                        table.string('text', 1000);
                         table.string('img_url');
                         table
                             .integer('user_id')

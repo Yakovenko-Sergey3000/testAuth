@@ -1,11 +1,10 @@
 const db = require('../db'),
     bcrypt = require('bcrypt'),
     AdapterService = require('../controllers/UserPersistenceAdapterService'),
-    ModelUser = require('../models/ModelUser'),
     {v4: uuid4 }= require('uuid');
 
 const adapterService = new AdapterService()
-class AuthServise {
+class AuthService {
 
     async createUser(body) {
        const {name, pass, email} = body,
@@ -57,23 +56,18 @@ class AuthServise {
        return  token ? await adapterService.getSessionByToken(token) : '';
     }
 
+    async getUserIdByToken(token) {
+        return await adapterService.getUserIdByToken(token)
+    }
 
-   //  async addPost(post) {
-   //      const {text, url, id, title} = post;
-   //
-   //      db.query('INSERT INTO posts (title, text, img_url, user_id) values ($1, $2, $3, $4)', [title,text, url, id])
-   //  }
-   //
-   //  async allPostsUser(id) {
-   //     return await db.query('select * from posts where user_id=$1', [id] )
-   //  }
-   //
-   //
-   //  async deletePost(id) {
-   //      return await db.query('delete from posts where id=$1', [id] )
-   //  }
+    async findOne(id) {
+        return await  adapterService.getUserById(id)
+    }
+
+
+
 }
 
 
 
-module.exports = AuthServise;
+module.exports = AuthService;

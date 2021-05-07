@@ -10,16 +10,17 @@
     <div class="page-bg addPost">
         <div class="container">
             <h1 class="addPostTitle">Add Post</h1>
-            <form  action="/post/add" method="POST">
+            <form  action="/post/add" method="POST" enctype="multipart/form-data">
                  <div class="col-sm-4">
                      <input type="text" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Enter title..." name="title">  
                  </div>
                  <div class="col-sm-4">
                      <input type="text" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Enter text..." name="text">  
                  </div>
-                 <div class="col-sm-4">
-                     <input type="text" class="form-control form-control-lg" id="colFormLabelLg" placeholder="Enter url..." name="url">  
+                 <div class="col">
+                     <input type="file" class="" name="url" accept="image/jpeg,image/png" value="/img/post-img" >
                  </div>
+
                  <input type="hidden" value="<%=id%>" name="id">
      
                  <div class="col">

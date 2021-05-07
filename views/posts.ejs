@@ -19,24 +19,20 @@
                     
                         <% posts.forEach((i)=> { %>
                             <div class="card">
-                                <div class="card-close">
-                                    <form action="/post/del" method="POST">
-                                        <input type="hidden" value="<%=i.id%>" name="id">
-                                        <button  type="submit" class="close btn-close" aria-label="Close" data-target="#exampleModal" >
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </form>
-                                   
+                                <div class="card-close mb-0">
+                                    <button  type="submit" class="close btn-close" aria-label="Close" data-target="#exampleModal" data-id="<%=i.id%>">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
             
                                 
-                                <h3 class="card-title"><%=i.title%></h3>
+                                <h3 class="card-title mt-0"><%=i.title%></h3>
                                 <div class="card-body">
                                     <hr>
                                     <p class="card-text text-justify">
                                         <%=i.text%>
                                     </p>
-                                   <img class="card-img" src="<%=i.img_url%>" alt="<%=i.text%>"> 
+                                   <img class="card-img" src="<%=i.img_url%>" alt="<%=i.text%>">
     
                                     <div class="card-footer">
                                        
@@ -55,12 +51,7 @@
                                                 <input type="radio" id="star-1" name="rating" value="1">
                                                 <label for="star-1" title="Оценка «1»"></label>
                                             </div>
-                                            <div class="card-date">
-                                                at
-                                                <span><%=Date(i.date).slice(4,15)%></span>
-                                                author
-                                                <span><%=user%></span>
-                                            </div>
+
                                         </div>
                                         <button class="btn btn-warning">Open post</button>
                                     </div>
@@ -80,7 +71,9 @@
         </div>
     </div>
    
+    <%- include('./partials/deleteModal.ejs') %>
     <%- include('./partials/footer.ejs') %>
+
 
 
     

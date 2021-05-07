@@ -1,20 +1,19 @@
 const {Router} = require('express');
-const AuthServise = require('../models/AuthServise');
+const AuthService = require('../models/AuthService');
 
 
 const router = Router();
 
-const authServise = new AuthServise();
+const authService = new AuthService();
 
 router.get('/auth/reg',(req, res) => {
-    authServise.getUsers()
     res.render('reg.ejs')
 })
 
 router.post('/auth/reg/add', async (req, res) => {
     try {
-        const userId = await authServise.createUser(req.body);
-        const token = await authServise.createToken(userId.toString());
+        const userId = await authService.createUser(req.body);
+        const token = await authService.createToken(userId.toString());
         res.cookie('token', token )
         res.redirect('/open');
     } catch(e) {
@@ -29,8 +28,8 @@ router.get('/auth/log',(req, res) => {
 
 router.post('/auth/log',async (req, res) => {
     try {
-        const user = await authServise.login(req.body)
-        const token = await authServise.createToken(user.id);
+        const user = await authService.login(req.body)
+        const token = await authService.createToken(user.id);
            res.cookie('token', token , {maxAge: Date.now() * 7})
             res.redirect('/open')
     } catch(e) {

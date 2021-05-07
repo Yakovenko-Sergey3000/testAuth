@@ -1,7 +1,23 @@
+const btnClose = document.querySelectorAll('.btn-close');
 
-  // $('.btn-close').on('click', (i) => {
-  //   $('#exampleModal').modal('show')
-  // })
+
+btnClose.forEach((btn, i) => {
+  btn.addEventListener('click', function () {
+    document.querySelector('.modal_hideInput').value = this.getAttribute('data-id')
+    $('#exampleModal').modal('show')
+  })
+})
+
+
+
+
+
+
+
+
+
+
+
 
   
 
